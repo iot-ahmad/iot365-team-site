@@ -55,7 +55,7 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ onHoverStart, onHoverE
     {
       num: "04",
       name: "Mohammad rawaqa",
-      arabicName: "محمد القرعان",
+      arabicName: "محمد رواقه",
       role: "Software & Systems Engineer",
       icon: Terminal,
       accent: "#2b4bee",
