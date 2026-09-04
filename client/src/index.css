@@ -1,0 +1,178 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@layer base {
+  :root {
+    --background: #07080a;
+    --foreground: #f5f2eb;
+    --hero-bg: #f5f2eb;
+    --hero-fg: #0a0c10;
+    --brand-blue: #2b4bee;
+    --brand-blue-light: #4465ff;
+    --brand-blue-glow: rgba(43, 75, 238, 0.35);
+    --accent: #2b4bee;
+    --accent-neon: #d4ff3a;
+    --muted: #888d96;
+    --muted-light: #52565e;
+    --border: rgba(255, 255, 255, 0.12);
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-dark: rgba(10, 12, 16, 0.15);
+    --container-width: 1400px;
+    --font-display: "Anton", sans-serif;
+    --font-alt-display: "Archivo Black", sans-serif;
+    --font-syne: "Syne", sans-serif;
+    --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: "IBM Plex Mono", monospace;
+    --font-handwritten: "Caveat", cursive;
+  }
+
+  html {
+    background-color: #07080a;
+    color: #f5f2eb;
+    font-family: var(--font-body);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: auto;
+  }
+
+  body {
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-color: #07080a;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #07080a;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2b4bee;
+}
+
+/* Noise overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  content: "";
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Editorial Typography Helpers */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+.font-syne {
+  font-family: var(--font-syne);
+}
+
+.font-mono-tech {
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+.font-script {
+  font-family: var(--font-handwritten);
+}
+
+/* Giant Hero Heading */
+.hero-giant-title {
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 15vw, 15.5rem);
+  line-height: 0.82;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.hero-giant-sub {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 12vw, 12.5rem);
+  line-height: 0.82;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+/* Section Title */
+.editorial-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 9vw, 9rem);
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+/* Lenis Recommended CSS */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Subtle magnetic text transition */
+.magnetic-link {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1), color 0.3s ease;
+}
+
+.magnetic-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.35s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.magnetic-link:hover::after {
+  width: 100%;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
